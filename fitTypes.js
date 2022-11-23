@@ -43,7 +43,7 @@ class Message {
 
 	get dataBuffer() { return Message.dataBuffer; }
 
-	writeDefinitionNew(definitions)
+	writeDefinition(definitions)
 	{
 		// is a definition message needed?
 		// 1) if the last message differs by type; and
@@ -77,7 +77,7 @@ class Message {
 		Message.lastDefinitionMessage = this.globalMessageNumber;
 	}
 
-	writeDataMessageNew(...values)
+	writeDataMessage(...values)
 	{
 		const items = this.fields.map((field, i) => {
 			let descriptor = field.descriptor();
@@ -87,7 +87,7 @@ class Message {
 			return { field, value, size, descriptor }
 		});
 
-		this.writeDefinitionNew(items);
+		this.writeDefinition(items);
 
 		const headerSize = 1;
 		let messageSize = items.reduce((acc, item) => acc + item.size, 0);
