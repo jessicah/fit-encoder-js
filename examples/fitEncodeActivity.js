@@ -177,8 +177,5 @@ class ActivityEncoder extends FitEncoder {
 			FitConstants.event.activity,
 			FitConstants.event_type.stop
 		);
-
-		// Reserve space for the CRC
-		Message.dataBuffer.getChunk(2);
 	}
 }
