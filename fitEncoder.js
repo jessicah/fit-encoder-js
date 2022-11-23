@@ -75,6 +75,9 @@ class FitEncoder {
 
 	getFile()
 	{
+		// Reserve space for the CRC
+		Message.dataBuffer.getChunk(2);
+
 		const headerPlusCrcSize = 16;
 		const finalSize = Message.dataBuffer.getBufferSize();
 
