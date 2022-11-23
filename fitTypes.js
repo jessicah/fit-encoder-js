@@ -50,7 +50,7 @@ class Message {
 		// 2) it doesn't contain any variable length fields
 		if (Message.lastDefinitionMessage == this.globalMessageNumber)
 		{
-			if (this.fields.find(field => field.type == ValueType.string) === undefined)
+			if (this.fields.every(field => field.type !== ValueType.string))
 			{
 				return;
 			}
