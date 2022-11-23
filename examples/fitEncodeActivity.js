@@ -83,21 +83,21 @@ class ActivityEncoder extends FitEncoder {
 
 		console.log('dates:', startTime, endTime);
 
-		fileIdMessage.writeDataMessageNew(
+		fileIdMessage.writeDataMessage(
 			startTime, // time_created
 			FitConstants.manufacturer.the_sufferfest,
 			0,
 			FitConstants.file.activity
 		);
 
-		eventMessage.writeDataMessageNew(
+		eventMessage.writeDataMessage(
 			startTime,
 			0,
 			FitConstants.event.timer,
 			FitConstants.event_type.start
 		);
 
-		deviceInfoMessage.writeDataMessageNew(
+		deviceInfoMessage.writeDataMessage(
 			startTime,
 			"SYSTM",
 			FitConstants.manufacturer.the_sufferfest,
@@ -105,12 +105,12 @@ class ActivityEncoder extends FitEncoder {
 			FitConstants.device_index.creator
 		);
 
-		sportMessage.writeDataMessageNew(
+		sportMessage.writeDataMessage(
 			FitConstants.sport.cycling,
 			FitConstants.sub_sport.indoor_cycling
 		);
 
-		workoutMessage.writeDataMessageNew(
+		workoutMessage.writeDataMessage(
 			activity.name,
 			FitConstants.sport.cycling,
 			FitConstants.sub_sport.indoor_cycling
@@ -120,7 +120,7 @@ class ActivityEncoder extends FitEncoder {
 		console.log(`number of records: ${numRecords}`);
 		for (let ix = 0; ix < numRecords; ++ix)
 		{
-			recordMessage.writeDataMessageNew(
+			recordMessage.writeDataMessage(
 				startTime + ix,
 				activity.power[ix],
 				activity.heartRate[ix],
@@ -128,21 +128,21 @@ class ActivityEncoder extends FitEncoder {
 			);
 		}
 
-		eventMessage.writeDataMessageNew(
+		eventMessage.writeDataMessage(
 			endTime,
 			0,
 			FitConstants.event.timer,
 			FitConstants.event_type.stop_all
 		);
 
-		eventMessage.writeDataMessageNew(
+		eventMessage.writeDataMessage(
 			endTime,
 			0,
 			FitConstants.event.session,
 			FitConstants.event_type.stop_disable_all
 		);
 
-		sessionMessage.writeDataMessageNew(
+		sessionMessage.writeDataMessage(
 			endTime,
 			startTime,
 			(endTime - startTime) * 1000, // scale = 1000
@@ -169,7 +169,7 @@ class ActivityEncoder extends FitEncoder {
 			//0
 		);
 
-		activityMessage.writeDataMessageNew(
+		activityMessage.writeDataMessage(
 			endTime - startTime,
 			startTime,
 			1,
