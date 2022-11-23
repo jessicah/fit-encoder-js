@@ -19,7 +19,7 @@ class WorkoutEncoder extends FitEncoder {
 				"manufacturer",
 				"product",
 				"type")
-			.writeDataMessageNew(
+			.writeDataMessage(
 				FitEncoder.toFitTimestamp(new Date()),
 				FitConstants.manufacturer.the_sufferfest,
 				0,
@@ -30,7 +30,7 @@ class WorkoutEncoder extends FitEncoder {
 				"wkt_name",
 				"sport",
 				"num_valid_steps")
-			.writeDataMessageNew(
+			.writeDataMessage(
 				this.name,
 				FitConstants.sport.cycling,
 				this.totalSteps
@@ -51,7 +51,7 @@ class WorkoutEncoder extends FitEncoder {
 			"message_index");
 		
 		if (this.openSteps == true)
-			workoutStepMessage.writeDataMessageNew(
+			workoutStepMessage.writeDataMessage(
 				undefined,
 				undefined,
 				undefined,
@@ -66,7 +66,7 @@ class WorkoutEncoder extends FitEncoder {
 			);
 		
 		for (const step of this.steps)
-				workoutStepMessage.writeDataMessageNew(
+				workoutStepMessage.writeDataMessage(
 					step.watts === undefined ? undefined : step.watts[0],
 					step.watts === undefined ? undefined : step.watts[1],
 					FitConstants.wkt_step_target.cadence,
@@ -81,7 +81,7 @@ class WorkoutEncoder extends FitEncoder {
 				);
 
 		if (this.openSteps == true)
-		workoutStepMessage.writeDataMessageNew(
+		workoutStepMessage.writeDataMessage(
 			undefined,
 			undefined,
 			undefined,
