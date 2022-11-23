@@ -94,8 +94,5 @@ class WorkoutEncoder extends FitEncoder {
 			FitConstants.intensity.rest,
 			this.stepIndex++
 		);
-
-		// Reserve space for the CRC
-		Message.dataBuffer.getChunk(2);
 	}
 }
